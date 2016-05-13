@@ -24,6 +24,7 @@ def review_input(user_input):
 
 def take_quiz(quiz_string, blanks_list):
     #In current iteration, this function replaces the blanks
+    print quiz
     replaced = []
     quiz_string = quiz_string.split()
     for text in quiz_string:
