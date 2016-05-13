@@ -12,12 +12,12 @@ def take_quiz(quiz_string, blanks_list):
     for text in quiz_string:
         replacement = blanks_in_text(text, blanks_list)
         if replacement != None:
-            text = text.replace(replacement, "corgi")
+            user_input = raw_input("The answer is?")
+            text = text.replace(replacement, user_input)
             replaced.append(text)
         else:
             replaced.append(text)
     replaced = " ".join(replaced)
-    return replaced 
-                    
+    return replaced                     
     
 print take_quiz(quiz, blanks_list)
