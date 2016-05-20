@@ -1,14 +1,17 @@
 quiz_level = ["easy", "medium", "hard"]
 
-quiz = ['''Easy A ___(1)___ is created with the def keyword. You specify the inputs a ___(1)___ takes by
+quiz = ['''
+Easy A ___(1)___ is created with the def keyword. You specify the inputs a ___(1)___ takes by
 adding ___(2)___ separated by commas between the parentheses. ___(1)___s by default return ___(3)___ if you
 don't specify the value to return. ___(2)___ can be standard data types such as string, number, dictionary,
 tuple, and ___(4)___ or can be more complicated such as objects and lambda functions.
-''',  '''Medium A ___(1)___ is created with the def keyword. You specify the inputs a ___(1)___ takes by
+''',  '''
+Medium A ___(1)___ is created with the def keyword. You specify the inputs a ___(1)___ takes by
 adding ___(2)___ separated by commas between the parentheses. ___(1)___s by default return ___(3)___ if you
 don't specify the value to return. ___(2)___ can be standard data types such as string, number, dictionary,
 tuple, and ___(4)___ or can be more complicated such as objects and lambda functions.
-''', '''Hard A ___(1)___ is created with the def keyword. You specify the inputs a ___(1)___ takes by
+''', '''
+Hard A ___(1)___ is created with the def keyword. You specify the inputs a ___(1)___ takes by
 adding ___(2)___ separated by commas between the parentheses. ___(1)___s by default return ___(3)___ if you
 don't specify the value to return. ___(2)___ can be standard data types such as string, number, dictionary,
 tuple, and ___(4)___ or can be more complicated such as objects and lambda functions.
@@ -30,8 +33,7 @@ rules = '''
 For each blank, you'll get five chances to answer correctly.
 If you fail to answer correctly in five attempts, the quiz will end.
 
-Here's your quiz.
-'''
+Here's your quiz.'''
 
 difficulty_level = [["easy", "Easy", "Easy.", "Easy!", "EASY", "EASY!"], ["medium", "Medium", "Medium.", "Medium!", "MEDIUM", "MEDIUM!"], ["hard", "Hard", "Hard.", "Hard!", "HARD", "HARD!"]]
 
@@ -47,14 +49,6 @@ def determine_level(user_input):
         return 2
     else:
         return None
-
-user_input = raw_input(welcome)
-while determine_level(user_input) == None:
-    user_input = raw_input(follow_the_rules)
-level = determine_level(user_input)
-print ""
-print "You chose " + quiz_level[level] + "."
-print rules
 
 
 def review_answer(answer_input):
@@ -78,20 +72,25 @@ def replace_blanks(current_quiz, blanks_list):
     return replaced
 
 
-
+user_input = raw_input(welcome)
+while determine_level(user_input) == None:
+    user_input = raw_input(follow_the_rules)
+level = determine_level(user_input)
+print "\n" + "You chose " + quiz_level[level] + "."
+print rules
 current_quiz = quiz[level]
 blanks = 1
 chances = 5
 print current_quiz
 while blanks < len(blanks_list):
-    answer_input = raw_input("What belongs in" + blanks_list[blanks] + "?")
+    answer_input = raw_input("\n" +"What belongs in" + blanks_list[blanks] + "?")
     if review_answer(answer_input):
-        print "Well done."
+        print "\n" + "Well done." + "\n"
         current_quiz = replace_blanks(current_quiz, blanks_list)
         print current_quiz
         blanks += +1
     else:
-        print "Nope."
+        print "\n" + "Nope."
         chances -= 1
         if chances == 1:
             print "This is your last chance."
@@ -100,7 +99,7 @@ while blanks < len(blanks_list):
             break
         else:
             print "You have " + str(chances) + " chances left to answer correctly."
-        print current_quiz
+        #print current_quiz
         
     
 
