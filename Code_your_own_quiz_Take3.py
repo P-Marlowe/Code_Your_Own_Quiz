@@ -81,6 +81,7 @@ def replace_blanks(current_quiz, blanks_list):
 
 current_quiz = quiz[level]
 blanks = 1
+chances = 5
 print current_quiz
 while blanks < len(blanks_list):
     answer_input = raw_input("What belongs in" + blanks_list[blanks] + "?")
@@ -90,17 +91,19 @@ while blanks < len(blanks_list):
         print current_quiz
         blanks += +1
     else:
-        #blanks += +1
         print "Nope."
+        chances -= 1
+        if chances == 1:
+            print "This is your last chance."
+        elif chances == 0:
+            print "That's not correct.Your quiz is over."
+            break
+        else:
+            print "You have " + str(chances) + " chances left to answer correctly."
+        print current_quiz
+        
     
 
-
-
-
-
-#test_list = [[["dog"], ["cat", "horse", "uncle"], ["fish"]], ["meddog", "medcat", "medfish"], ["harddog", "hardcat", "hardfish"]]
-
-#print len(blanks)
 
 
 
